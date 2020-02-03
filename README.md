@@ -48,3 +48,10 @@ TARGETS: PREREQUISITES ; RECIPE
 ```
 
 foo.c나 defs.h가 변경 되면 `cc -c -g foo.c`명령을 실행해 foo.o을 만든다.
+
+
+
+### Reference
+
+- https://www.gnu.org/software/make/manual/make.html
+
