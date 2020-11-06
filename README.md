@@ -1,20 +1,16 @@
 ## Make
 
-**make**는 소프트웨어 개발을 위해 유닉스 계열 운영 체제에서 주로 사용되는 프로그램 빌드 도구이다.
+Make is a build tool primarily used in Unix-based operating systems for software development. It allows you to compile a program by defining the dependencies between multiple files and the commands required for each file, and has a standardized syntax for describing the process of creating a final program. The file that describes this structure, typically called a Makefile, is interpreted by the make command to perform the program build.
 
-여러 파일들끼리의 의존성과 각 파일에 필요한 명령을 정의함으로써 프로그램을 컴파일할 수 있으며 최종 프로그램을 만들 수 있는 과정을 서술할 수 있는 표준적인 문법을 가지고 있다.
-
-위의 구조로 기술된 파일(주로 Makefile이라는 파일명)을 `make`가 해석하여 프로그램 빌드를 수행하게 된다.
-
-
+<br/>
 
 ## Makefile
 
-make을 실행하기 전에 프로젝트의 목록 및 컴파일 및 링크 규칙을 만들어야 한다.
+Before running make, you need to create a list of targets and the compile and link rules for your project. This is typically done using a Makefile, which contains rules that define how files should be built.
 
-이것은 보통 Makefile을 사용한다. 이 파일에 규칙을 입력하여 파일로 만든다.
+<br/>
 
-### 규칙
+## Rules
 
 ```
 TARGET ...: PREREQUISITES ...
@@ -22,36 +18,36 @@ TARGET ...: PREREQUISITES ...
 	...
 ```
 
-또 다른 형식은
+Another format is
 
 ```
 TARGETS: PREREQUISITES ; RECIPE
 	RECIPE
 	...
+
 ```
 
-- TARGET
+**TARGET**
 
-  실행 파일, object 파일, 라이브러리 등 목적 규칙을 정의한다. RECIPE에서 실행된 결과로 만들어 진다. RECIPE 여러개의 명령줄을 사용할 수가 있어 복잡한 기능도 수행이 가능하다. 생성파일이나 install 같은 기능적 블럭도 가능하다.
+-   Defines the target rule for executable files, object files, libraries, etc. It is created as a result of executing the recipe. Multiple command lines can be used in the recipe, allowing for complex functionality such as creating files or performing installations.
 
-- PREREQUISITES
+**PREREQUISITES**
 
-  TARGET을 만들 때, 의존성(연관관계)를 규정한다. 이 부분에 나열된 파일 중 수정된 파일이 있으면 TARGET을 다시 만든다.
+-   Specifies the dependencies (relationships) when creating the TARGET. If any of the files listed in this section have been modified, the TARGET will be recreated.
 
-- RECIPE
+**RECIPE**
 
-  TARGET을 만들기 위한 실행 파일이다. 이 실행 규칙에 따라 TARGET이 생성 된다. 주로 cc나 리눅스 명령어를 사용한다. 이 명령 줄은 여러 줄이 가능하다. 주의 할 것은 RECIPE 부분의 앞 공간은 키보드 Tab ↹을 사용해야 한다. Space키로 공간을 넣으면 안 된다.
+-   The executable file used to create the TARGET. The TARGET is generated according to this execution rule. This usually involves using cc or Linux commands. Multiple command lines are possible in the recipe. It's important to note that the beginning of the recipe should be indented with a keyboard Tab ↹ rather than spaces.
 
 ```
      foo.o : foo.c defs.h       # module for twiddling the frobs
              cc -c -g foo.c
 ```
 
-foo.c나 defs.h가 변경 되면 `cc -c -g foo.c`명령을 실행해 foo.o을 만든다.
+If foo.c or defs.h is modified, the `cc -c -g foo.c` command will be executed to create foo.o.
 
-
+<br/>
 
 ### Reference
 
-- https://www.gnu.org/software/make/manual/make.html
-
+-   https://www.gnu.org/software/make/manual/make.html
