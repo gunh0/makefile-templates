@@ -13,3 +13,8 @@ clean:
 	rm -f sum.o main.o
 	rm -f sum
 
+run-sum: sum
+	./sum
+
+run-main: main
+	./main
