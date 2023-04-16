@@ -15,6 +15,3 @@ clean:
 
 run-sum: sum
 	./sum
-
-run-main: main
-	./main
